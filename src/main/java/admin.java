@@ -7,6 +7,14 @@
  *
  * @author vivic
  */
-class admin {
+public class admin extends utilisateur{
     
+   
+    public admin(String valMDP, String valemail){
+        super(valMDP, valemail);
+    }
+    
+    public void Afficher(){
+        System.out.println(this.MDP+this.email);
+    }
 }
