@@ -1,5 +1,6 @@
 
 import java.util.List;
+import java.util.Scanner;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,6 +31,55 @@ public class plateforme {
         return "liste des clients : " + tabclients + "liste des admins : " + tabadmin + "liste des cours passés : " + tabcourspasse +"liste des cours futurs : "+ tabcoursfutur
                 +"duree du cours : "+ dureecours;
     }
+     public void seconnecter(){}
+     public void creerCompteClient() {
+
+    Scanner sc = new Scanner(System.in);
+
+
+    System.out.print("Entrez votre email : ");
+    String email = sc.nextLine();
+
+    // Vérification email déjà utilisé
+    for (client c : tabclients) {
+        if (c.email.equalsIgnoreCase(email)) {
+            System.out.println("Erreur : cet email est déjà utilisé !");
+            return;
+        }
+    }
+
+    System.out.print("Entrez votre mot de passe : ");
+    String mdp = sc.nextLine();
+
+    System.out.print("Entrez votre nom : ");
+    String nom = sc.nextLine();
+
+    System.out.print("Entrez votre prénom : ");
+    String prenom = sc.nextLine();
+
+    System.out.print("Entrez votre numéro de téléphone : ");
+    int tel = sc.nextInt();
+    sc.nextLine(); // vider le buffer
+
+    System.out.print("Entrez votre adresse : ");
+    String adresse = sc.nextLine();
+
+    // Génération automatique numéro client
+    int numClient = 1;
+    if (!tabclients.isEmpty()) {
+        numClient = tabclients.get(tabclients.size() - 1).numero + 1;
+    }
+
+    // Création du client
+    client nouveauClient = new client(mdp, email, numClient, nom, prenom, tel, adresse);
+    nouveauClient.abonnement = true;
+
+    tabclients.add(nouveauClient);
+
+    System.out.println("Compte créé avec succès !");
+    System.out.println("Votre numéro client est : " + numClient);
+}
+             
      
 
     
@@ -39,15 +89,4 @@ public class plateforme {
     
     
     }
-            
-
-
-
-
-            
-    
-    
-    
-            
-    
     
