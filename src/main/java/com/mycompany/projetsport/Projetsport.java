@@ -8,9 +8,15 @@ package com.mycompany.projetsport;
  *
  * @author vivic
  */
-public class Projetsport {
+import java.util.ArrayList;
 
+public class Projetsport {
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        ArrayList<client> listeClients = new ArrayList<>();
+        listeClients.add(new client("mdp1", "client1@email.com", 1, "Dupont", "Jean", 123456789, "1 rue de Paris"));
+        listeClients.add(new client("mdp2", "client2@email.com", 2, "Martin", "Pierre", 987654321, "2 avenue de Lyon"));
+        for (client client : listeClients) {
+            client.afficher();
+        }
     }
 }
