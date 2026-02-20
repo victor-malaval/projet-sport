@@ -13,13 +13,13 @@ import java.util.List;
  */
 public class cours {
     private int coursID;
-    private boolean typecours;
+    private String typecours;
     private String activite;
     private  LocalDateTime date;
     private int nbplace;
     private List<client> listeinscrits;
     
-    public cours(int valcoursID, boolean valtypecours, String valactivite, LocalDateTime valdate, int valnbplace,List<client> vallisteinscrits){
+        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace,List<client> vallisteinscrits){
         this.coursID=valcoursID;
         this.activite=valactivite;
         this.date=valdate;
