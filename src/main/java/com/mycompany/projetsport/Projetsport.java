@@ -21,7 +21,7 @@ public class Projetsport {
     
         }
         /*test creation comte client*/
-        plateforme plateforme=new plateforme("sauvegarde.txt", 60);
+        plateforme plateforme=new plateforme("sauvegarde.txt");
         plateforme.creerCompteClient();
         System.out.println(plateforme);
 
