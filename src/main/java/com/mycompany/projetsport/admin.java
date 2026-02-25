@@ -17,6 +17,6 @@ public class admin extends utilisateur{
     }
     
     public void Afficher(){
-        System.out.println(this.MDP+this.email);
+        System.out.println(getMDP()+getemail());
     }
 }

@@ -23,11 +23,19 @@ Etat abonnement actif passif
 Information nom prenom n°tel adresse postale
 Liste cours passés
 Liste cours futurs**/
-    public String MDP;
-    public String email;
+    private String MDP;
+    private String email;
     
     public utilisateur(String valMDP, String valemail){
         this.MDP = valMDP;
         this.email = valemail;
+    }
+    /* GETTHERS*/
+    public String getMDP() {
+        return MDP;
+    }
+
+    public String getemail() {
+        return email;
     }
 }

@@ -1,9 +1,8 @@
 package com.mycompany.projetsport;
 
 
-import com.mycompany.projetsport.cours;
-import com.mycompany.projetsport.client;
-import com.mycompany.projetsport.admin;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -24,37 +23,48 @@ public class plateforme {
     private String Nomfichiersauvegarde;
     private int dureecours;
     
-    public plateforme (List<client> valtabclients,List<admin> valtabadmin,List<cours> valtabcourspasse,List<cours> valtabcoursfutur, String valNomfichiersauvegarde,int valdureecours){
+    public plateforme (String valNomfichiersauvegarde,int valdureecours){
         this.Nomfichiersauvegarde=valNomfichiersauvegarde;
         this.dureecours=valdureecours;
-        this.tabadmin=valtabadmin;
-        this.tabclients=valtabclients;
-        this.tabcoursfutur=valtabcoursfutur;
-        this.tabcourspasse=valtabcourspasse;
+        this.tabadmin=new ArrayList<>();
+        this.tabclients=new ArrayList<>();
+        this.tabcoursfutur=new ArrayList<>();
+        this.tabcourspasse=new ArrayList<>();
     }
+    @Override
      public String toString(){
-        return "liste des clients : " + tabclients + "liste des admins : " + tabadmin + "liste des cours passés : " + tabcourspasse +"liste des cours futurs : "+ tabcoursfutur
-                +"duree du cours : "+ dureecours;
+        return "liste des clients : " + tabclients + " liste des admins : " + tabadmin + " liste des cours passés : " + tabcourspasse +" liste des cours futurs : "+ tabcoursfutur
+                +" duree du cours : "+ dureecours;
     }
      public void seconnecter(){}
+     
+     
+     
      public void creerCompteClient() {
 
     Scanner sc = new Scanner(System.in);
-
-
-    System.out.print("Entrez votre email : ");
-    String email = sc.nextLine();
-
+    String email="valeur initial";
+    
     // Vérification email déjà utilisé
-    for (client c : tabclients) {
-        if (c.email.equalsIgnoreCase(email)) {
-            System.out.println("Erreur : cet email est déjà utilisé !");
-            return;
+    boolean emailExiste=true;
+    while (emailExiste==true) {
+        emailExiste=false;
+        System.out.print("Entrez votre email : ");
+        email = sc.nextLine();
+        for (client c : tabclients) {
+            if (c.getemail().equals(email)) {
+            System.out.println("Email déjà utilisé !");
+            emailExiste = true;
+            break;
+            }
         }
     }
-
+        
     System.out.print("Entrez votre mot de passe : ");
     String mdp = sc.nextLine();
+    
+    System.out.print("Entrez votre type d'abonnement (trimestriel/semestriel/annuel) : ");
+    String typeabonnement = sc.nextLine();
 
     System.out.print("Entrez votre nom : ");
     String nom = sc.nextLine();
@@ -63,35 +73,23 @@ public class plateforme {
     String prenom = sc.nextLine();
 
     System.out.print("Entrez votre numéro de téléphone : ");
-    int tel = sc.nextInt();
-    sc.nextLine(); // vider le buffer
+    String tel = sc.nextLine();
+    
 
     System.out.print("Entrez votre adresse : ");
     String adresse = sc.nextLine();
 
     // Génération automatique numéro client
-    int numClient = 1;
-    if (!tabclients.isEmpty()) {
-        numClient = tabclients.get(tabclients.size() - 1).numero + 1;
-    }
+    int numClient = tabclients.size()+1;
 
     // Création du client
-    client nouveauClient = new client(mdp, email, numClient, nom, prenom, tel, adresse);
-    nouveauClient.abonnement = true;
+    client nouveauClient = new client(mdp, email, numClient, nom, prenom, tel, adresse,typeabonnement);
 
     tabclients.add(nouveauClient);
 
     System.out.println("Compte créé avec succès !");
     System.out.println("Votre numéro client est : " + numClient);
 }
-             
-     
-
-    
-           
-    
-    
-    
     
     }
     

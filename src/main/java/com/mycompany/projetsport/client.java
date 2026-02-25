@@ -9,26 +9,27 @@ package com.mycompany.projetsport;
  *
  * @author vivic
  */
-import java.util.ArrayList;
-
 public class client extends utilisateur {
-    public int numero;
-    public String nom;
-    public String prenom;
-    public int tel;
-    public String adresse;
-    public boolean abonnement;
+    private int numero;
+    private String nom;
+    private String prenom;
+    private String tel;
+    private String adresse;
+    private String typeabonnement;
+    private boolean abonnement;
 
-    public client(String valMDP, String valemail, int valnumero, String valnom, String valprenom, int valtel, String valadresse) {
+    public client(String valMDP, String valemail, int valnumero, String valnom, String valprenom, String valtel, String valadresse, String valtypeabonnement) {
         super(valMDP, valemail);
         this.numero = valnumero;
         this.nom = valnom;
         this.prenom = valprenom;
         this.tel = valtel;
         this.adresse = valadresse;
+        this.typeabonnement=valtypeabonnement;
+        this.abonnement=true;
     }
 
     public void afficher() {
-        System.out.println(this.MDP + " " + this.email + " " + this.numero + " " + this.nom + " " + this.prenom + " " + this.tel + " " + this.adresse);
+        System.out.println("mot de passe : "+ getMDP() + " email : " + getemail()+ " numero client : " + this.numero + " Nom : " + this.nom + " Prenom : " + this.prenom + " tel : " + this.tel + " adresse : " + this.adresse);
     }
 }

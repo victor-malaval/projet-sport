@@ -1,8 +1,9 @@
 package com.mycompany.projetsport;
 
 
-import com.mycompany.projetsport.client;
+
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -22,13 +23,13 @@ public class cours {
     private int nbplace;
     private List<client> listeinscrits;
     
-        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace,List<client> vallisteinscrits){
+        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace){
         this.coursID=valcoursID;
         this.activite=valactivite;
         this.date=valdate;
         this.nbplace=valnbplace;
         this.typecours=valtypecours;
-        this.listeinscrits=vallisteinscrits;
+        this.listeinscrits=new ArrayList<>();
                 }
     
                 
