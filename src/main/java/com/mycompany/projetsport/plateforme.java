@@ -33,10 +33,35 @@ public class plateforme {
     }
     @Override
      public String toString(){
-        return "liste des clients : " + tabclients + " liste des admins : " + tabadmin + " liste des cours passés : " + tabcourspasse +" liste des cours futurs : "+ tabcoursfutur
-                +" duree du cours : "+ dureecours;
+    String resultat = "Liste des clients :\n";
+
+    for (client c : tabclients) {
+        resultat += c.toString() + "\n";
     }
-     public void seconnecter(){}
+
+    resultat += "\nListe des admins :\n";
+    for (admin a : tabadmin) {
+        resultat += a.toString() + "\n";
+    }
+
+    resultat += "\nListe des cours passes :\n";
+    for (cours cp : tabcourspasse) {
+        resultat += cp.toString() + "\n";
+    }
+
+    resultat += "\nListe des cours futurs :\n";
+    for (cours cf : tabcoursfutur) {
+        resultat += cf.toString() + "\n";
+    }
+
+    resultat += "\nDuree du cours : " + dureecours;
+
+    return resultat;
+     }
+     
+
+     public void seconnecter(){
+     }
      
      
      
@@ -53,7 +78,7 @@ public class plateforme {
         email = sc.nextLine();
         for (client c : tabclients) {
             if (c.getemail().equals(email)) {
-            System.out.println("Email déjà utilisé !");
+            System.out.println("Email déjà utilise !");
             emailExiste = true;
             break;
             }
@@ -69,10 +94,10 @@ public class plateforme {
     System.out.print("Entrez votre nom : ");
     String nom = sc.nextLine();
 
-    System.out.print("Entrez votre prénom : ");
+    System.out.print("Entrez votre prenom : ");
     String prenom = sc.nextLine();
 
-    System.out.print("Entrez votre numéro de téléphone : ");
+    System.out.print("Entrez votre numero de telephone : ");
     String tel = sc.nextLine();
     
 
@@ -87,8 +112,8 @@ public class plateforme {
 
     tabclients.add(nouveauClient);
 
-    System.out.println("Compte créé avec succès !");
-    System.out.println("Votre numéro client est : " + numClient);
+    System.out.println("Compte cree avec succes !");
+    System.out.println("Votre numero client est : " + numClient);
 }
     
     }

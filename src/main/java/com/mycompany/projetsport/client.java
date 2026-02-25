@@ -29,7 +29,8 @@ public class client extends utilisateur {
         this.abonnement=true;
     }
 
-    public void afficher() {
-        System.out.println("mot de passe : "+ getMDP() + " email : " + getemail()+ " numero client : " + this.numero + " Nom : " + this.nom + " Prenom : " + this.prenom + " tel : " + this.tel + " adresse : " + this.adresse);
-    }
+    @Override
+public String toString() {
+    return "Numero client : " + numero +" ,Mot de passe : " + getMDP() +", Email : " + getemail() +", Nom : " + nom +", Prenom : " + prenom +", Tel : " + tel +", Adresse : " + adresse;
+}
 }
