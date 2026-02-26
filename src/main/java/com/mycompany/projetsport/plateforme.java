@@ -167,14 +167,42 @@ public class plateforme {
     tabadmin.add(nouveauAdmin);
 
     System.out.println("Compte cree avec succes !");
-}
+    }
+
             
+       
+    public admin seconnecteradmin(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("veuillez entrez votre mail : ");
+        String mail=sc.nextLine();
         
-    public void seconnecter(){
+        System.out.println("veuillez entrez votre mot de passe : ");
+        String mdp=sc.nextLine();
+        for(admin a : tabadmin){
+            if (a.getemail().equals(mail)&&a.getMDP().equals(mdp)){
+                System.out.println("connexion reussie ! ");
+                return a;
+            }
+        }
+        System.out.println("mot de passe ou email incorrect ");
+        return null;
+    }
+    public client seconnecterclient(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("veuillez entrez votre mail : ");
+        String mail=sc.nextLine();
         
-         
-         
-     }
+        System.out.println("veuillez entrez votre mot de passe : ");
+        String mdp=sc.nextLine();
+        for(client a  : tabclients){
+            if (a.getemail().equals(mail)&&a.getMDP().equals(mdp)){
+                System.out.println("connexion reussie ! ");
+                return a;
+            }
+        }
+        System.out.println("mot de passe ou email incorrect ");
+        return null;
+    }
     
     }
     
