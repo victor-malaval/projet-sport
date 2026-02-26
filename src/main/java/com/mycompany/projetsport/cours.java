@@ -22,15 +22,23 @@ public class cours {
     private  LocalDateTime date;
     private int nbplace;
     private List<client> listeinscrits;
+    private String dureecours;
     
-        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace){
+        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace, String valdureecours){
         this.coursID=valcoursID;
         this.activite=valactivite;
         this.date=valdate;
         this.nbplace=valnbplace;
         this.typecours=valtypecours;
         this.listeinscrits=new ArrayList<>();
+        this.dureecours=valdureecours;
                 }
+        @Override
+        public String toString() {
+        return "Cours ID : " + coursID +", Activite : " + activite +", Date : " + date 
+                +"duree : "+ dureecours+", Places : " + nbplace + ", Type : " + typecours +"Inscrit : "+listeinscrits;
+        }
+
     
                 
                 

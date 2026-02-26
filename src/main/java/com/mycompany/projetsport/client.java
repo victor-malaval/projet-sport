@@ -31,6 +31,29 @@ public class client extends utilisateur {
 
     @Override
 public String toString() {
-    return "Numero client : " + numero +" ,Mot de passe : " + getMDP() +", Email : " + getemail() +", Nom : " + nom +", Prenom : " + prenom +", Tel : " + tel +", Adresse : " + adresse;
+    return "Numero client : " + numero +" ,Mot de passe : " + getMDP() +", Email : " + getemail() +", Nom : " + nom +", Prenom : " + prenom +", Tel : " + tel +", Adresse : " + adresse
+    +", type abonnement : " + typeabonnement + ", etat " + abonnement;
 }
+public int getnumero() {
+        return numero;
+    }
+public String getnom() {
+        return nom;
+    }
+public String geteprenom() {
+        return prenom;
+    }
+public String gettel() {
+        return tel;
+    }
+public String getadresse() {
+        return adresse;
+    }
+public String gettypeabonnement() {
+        return typeabonnement;
+    }
+public boolean getabonnement(){
+    return abonnement;
+}
+
 }

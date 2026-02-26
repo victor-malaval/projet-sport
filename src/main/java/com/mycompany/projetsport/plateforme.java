@@ -21,16 +21,17 @@ public class plateforme {
     private List<cours> tabcourspasse;
     private List<cours> tabcoursfutur;
     private String Nomfichiersauvegarde;
-    private int dureecours;
     
-    public plateforme (String valNomfichiersauvegarde,int valdureecours){
+    
+    public plateforme (String valNomfichiersauvegarde){
         this.Nomfichiersauvegarde=valNomfichiersauvegarde;
-        this.dureecours=valdureecours;
         this.tabadmin=new ArrayList<>();
         this.tabclients=new ArrayList<>();
         this.tabcoursfutur=new ArrayList<>();
         this.tabcourspasse=new ArrayList<>();
     }
+    
+    
     @Override
      public String toString(){
     String resultat = "Liste des clients :\n";
@@ -54,21 +55,44 @@ public class plateforme {
         resultat += cf.toString() + "\n";
     }
 
-    resultat += "\nDuree du cours : " + dureecours;
-
     return resultat;
      }
      
+    public void afficherClient() {
+        if(tabclients.size()==0){
+            System.out.println("Aucun client enregistre pour le moment");
+        }
+        
+    System.out.println("Liste des clients :");
+    for (client c : tabclients) {
+        System.out.println("Numero : " + c.getnumero() +
+                ",  Email : " + c.getemail() +
+                ",  MDP : " + c.getMDP() +
+                ",  Nom : " + c.getnom() +
+                ",  Prenom : " + c.geteprenom() +
+                ",  Tel : " + c.gettel() +
+                ",  Adresse : " + c.getadresse() +
+                ",  Type  : " + c.gettypeabonnement() +
+                ",  Actif : " + c.getabonnement());
+    
+    }
+    }
+    public void afficherAdmin(){
+        if(tabadmin.size()==0){
+            System.out.println("Aucun admin enregistre pour le moment");
+        }
+        System.out.println("Liste des admins :");
+        for(admin a :tabadmin ){
+            System.out.println("Email : " + a.getemail() +",  MDP : " + a.getMDP());
+        } 
+    }
+    
 
-     public void seconnecter(){
-     }
-     
-     
-     
-     public void creerCompteClient() {
+    
+    public void creerCompteClient() {
 
     Scanner sc = new Scanner(System.in);
-    String email="valeur initial";
+    String email="";
     
     // Vérification email déjà utilisé
     boolean emailExiste=true;
@@ -78,9 +102,9 @@ public class plateforme {
         email = sc.nextLine();
         for (client c : tabclients) {
             if (c.getemail().equals(email)) {
-            System.out.println("Email déjà utilise !");
-            emailExiste = true;
-            break;
+                System.out.println("Email déjà utilise !");
+                emailExiste = true;
+                break;
             }
         }
     }
@@ -114,7 +138,43 @@ public class plateforme {
 
     System.out.println("Compte cree avec succes !");
     System.out.println("Votre numero client est : " + numClient);
+    }
+    
+    public void creerCompteAdmin() {
+    Scanner sc = new Scanner(System.in);
+    String email="";      
+    
+    // Vérification email déjà utilisé
+    boolean emailExiste = true;
+    while (emailExiste==true) {
+        emailExiste = false;
+        System.out.print("Entrez votre email : ");
+        email = sc.nextLine();   
+        for (admin a : tabadmin) {
+            if (a.getemail().equals(email)) {
+                System.out.println("Email déjà utilise !");
+                emailExiste = true;
+                break;
+            }
+        }
+    }
+
+    System.out.print("Entrez votre mot de passe : ");
+    String mdp = sc.nextLine();
+
+    // Creation de l'admin
+    admin nouveauAdmin = new admin(mdp, email);
+    tabadmin.add(nouveauAdmin);
+
+    System.out.println("Compte cree avec succes !");
 }
+            
+        
+    public void seconnecter(){
+        
+         
+         
+     }
     
     }
     

@@ -15,8 +15,10 @@ public class admin extends utilisateur{
     public admin(String valMDP, String valemail){
         super(valMDP, valemail);
     }
-    
-    public void Afficher(){
-        System.out.println(getMDP()+getemail());
+    @Override
+    public String toString() {
+    return "Mot de passe : " + getMDP() +", Email : " + getemail();
     }
+
+    
 }
