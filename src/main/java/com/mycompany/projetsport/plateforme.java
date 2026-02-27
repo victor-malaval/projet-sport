@@ -2,6 +2,7 @@ package com.mycompany.projetsport;
 
 
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -208,55 +209,181 @@ public class plateforme {
     }
     
     public void miseajourinfosclient(client c) {
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-    System.out.println("Mise a jour des informations client : ");
+        System.out.println("Mise a jour des informations client : ");
 
-    System.out.print("Voulez vous modifier votre nom ? (true/false) : ");
-    boolean changer = sc.nextBoolean();
-    sc.nextLine(); // vider le buffer
-    if (changer) {
-        System.out.print("Nouveau nom : ");
-        c.setnom(sc.nextLine());
+        System.out.print("Voulez vous modifier votre nom ? (true/false) : ");
+        boolean changer = sc.nextBoolean();
+        sc.nextLine(); // vider le buffer
+        if (changer) {
+            System.out.print("Nouveau nom : ");
+            c.setnom(sc.nextLine());
+        }
+
+        System.out.print("Voulez vous modifier votre prenom ? (true/false) : ");
+        changer = sc.nextBoolean();
+        sc.nextLine();
+        if (changer) {
+            System.out.print("Nouveau prenom : ");
+            c.setprenom(sc.nextLine());
+        }
+
+        System.out.print("Voulez vous modifier votre telephone ? (true/false) : ");
+        changer = sc.nextBoolean();
+        sc.nextLine();
+        if (changer) {
+            System.out.print("Nouveau telephone : ");
+            c.settel(sc.nextLine());
+        }
+
+        System.out.print("Voulez vous modifier votre adresse ? (true/false) : ");
+        changer = sc.nextBoolean();
+        sc.nextLine();
+        if (changer) {
+            System.out.print("Nouvelle adresse : ");
+            c.setadresse(sc.nextLine());
+        }
+
+        System.out.print("Voulez vous modifier votre type d abonnement ? (true/false) : ");
+        changer = sc.nextBoolean();
+        sc.nextLine();
+        if (changer) {
+            System.out.print("Nouveau type : ");
+            c.settypeabonnement(sc.nextLine());
+        }
+
+        System.out.println("Mise a jour terminee.");
+    }
+    
+    public void consulterinfosclient(client c) {
+        System.out.println("Numero : " + c.getnumero()
+                + ",  Email : " + c.getemail()
+                + ",  MDP : " + c.getMDP()
+                + ",  Nom : " + c.getnom()
+                + ",  Prenom : " + c.geteprenom()
+                + ",  Tel : " + c.gettel()
+                + ",  Adresse : " + c.getadresse()
+                + ",  Type  : " + c.gettypeabonnement()
+                + ",  Actif : " + c.getabonnement());
+    }
+    public void consulterlistecoursfutur(){
+    if (tabcoursfutur.size()==0) {
+        System.out.println("Aucun cours futur pour le moment.");
+        return;// sort de la methode si ausun cours futur
     }
 
-    System.out.print("Voulez vous modifier votre prenom ? (true/false) : ");
-    changer = sc.nextBoolean();
-    sc.nextLine();
-    if (changer) {
-        System.out.print("Nouveau prenom : ");
-        c.setprenom(sc.nextLine());
+    System.out.println("Liste des cours futurs : ");
+
+    for (cours cours : tabcoursfutur) {
+        System.out.println(cours);  // utilise automatiquement toString() de Cours
+    }
+    }
+    
+    public void consultercoursinscrit(client c) {
+        boolean trouve = false;
+
+        System.out.println("Vos cours futurs : ");
+
+        for (cours cours : tabcoursfutur) {              // parcourt uniquement les cours futurs
+            if (cours.getlisteinscrits().contains(c)) {  // le client est inscrit
+                System.out.println(cours);
+                trouve = true;
+            }
+        }
+
+        if (trouve==false) {
+            System.out.println("Vous n'avez aucun cours futur inscrit.");
+        }
+    }
+    public void consultercourspasse(client c){
+        boolean trouve = false;
+
+        System.out.println("Vos cours passes : ");
+
+        for (cours cours : tabcourspasse) {             // parcourt uniquement les cours passés
+            if (cours.getlisteinscrits().contains(c)) { // le client est inscrit
+                System.out.println(cours);
+                trouve = true;
+            }
+        }
+
+        if (trouve==false) {
+            System.out.println("Vous n'avez encore participe a aucun cours.");
+        }
+    }
+    public void consulterActivitesfutur() {
+        if (tabcoursfutur.size()!=0) {
+            for (cours cours : tabcoursfutur) {
+                System.out.println(cours.getactivite());
+            }
+        } else {
+            System.out.println("Aucune activite disponible pour le moment.");
+        }
+    }
+    public void inscrireCours(client c, int idCours) {
+        boolean trouve = false;
+        if (c.getabonnement()==false) {
+            System.out.println("Votre abonnement n'est pas actif. Vous ne pouvez pas vous inscrire a un cours.");
+            return;// sort de la methode si l'abonnement n'est pas actif
+        }
+
+        for (cours cours : tabcoursfutur) {
+            if (cours.getcoursID() == idCours) {
+                trouve = true;
+
+                // Vérifie s’il reste de la place
+                if (cours.getlisteinscrits().size() >= cours.getnbplace()) {
+                    System.out.println("Desole, le cours est complet.");
+                    return;// sort de la methode si le cours est complet
+                }
+
+                // Vérifie si le client est déjà inscrit
+                if (cours.getlisteinscrits().contains(c)) {
+                    System.out.println("Vous etes deja inscrit a ce cours.");
+                    return;// sort de la methode si le client est deja inscrit
+                }
+
+                // Inscription
+                cours.getlisteinscrits().add(c);
+                System.out.println("Inscription au cours reussie !");
+                return;
+            }
+        }
+
+        if (trouve==false) {
+            System.out.println("Cours introuvable.");
+        }
+    }
+    public void desinscrireCours(client c, int idCours) {
+        boolean trouve = false;
+
+        for (cours cours : tabcoursfutur) {
+            if (cours.getcoursID() == idCours) {
+                trouve = true;
+
+                // Vérifie si le client est inscrit
+                if (cours.getlisteinscrits().contains(c)==false) {
+                    System.out.println("Vous n'etes pas inscrit a ce cours.");
+                    return;//sort de la methode si le client n'est pas inscrit
+                }
+
+                // Désinscription
+                cours.getlisteinscrits().remove(c);
+                System.out.println("Vous avez ete desinscrit du cours.");
+                return;
+            }
+        }
+
+        if (trouve==false) {
+            System.out.println("Cours introuvable.");
+        }
     }
 
-    System.out.print("Voulez vous modifier votre telephone ? (true/false) : ");
-    changer = sc.nextBoolean();
-    sc.nextLine();
-    if (changer) {
-        System.out.print("Nouveau telephone : ");
-        c.settel(sc.nextLine());
     }
 
-    System.out.print("Voulez vous modifier votre adresse ? (true/false) : ");
-    changer = sc.nextBoolean();
-    sc.nextLine();
-    if (changer) {
-        System.out.print("Nouvelle adresse : ");
-        c.setadresse(sc.nextLine());
-    }
-
-    System.out.print("Voulez vous modifier votre type d abonnement ? (true/false) : ");
-    changer = sc.nextBoolean();
-    sc.nextLine();
-    if (changer) {
-        System.out.print("Nouveau type : ");
-        c.settypeabonnement(sc.nextLine());
-    }
-
-    System.out.println("Mise a jour terminee.");
-    }
 
     
    
     
-    }
     

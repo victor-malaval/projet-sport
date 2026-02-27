@@ -38,6 +38,20 @@ public class cours {
         return "Cours ID : " + coursID +", Activite : " + activite +", Date : " + date 
                 +"duree : "+ dureecours+", Places : " + nbplace + ", Type : " + typecours +"Inscrit : "+listeinscrits;
         }
+        public List<client> getlisteinscrits() {
+        return listeinscrits;
+        }
+        public String getactivite() {
+        return activite;
+        }
+        public int getcoursID() {
+        return coursID;
+        }
+        public int getnbplace(){
+            return nbplace;
+        }
+        
+    
 
     
                 

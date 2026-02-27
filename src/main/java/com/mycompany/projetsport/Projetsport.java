@@ -43,25 +43,28 @@ public class Projetsport {
 //        while (adminConnecte == null) {
 //            adminConnecte = plateforme.seconnecteradmin();
 //        }
-        //test de mise a jour infos clients et mdp
-        plateforme.creerCompteClient();
+        //test de mise a jour infos clients et mdp puis consulter les infos clients
+//        plateforme.creerCompteClient();
+//
+//        client clientConnecte = null;
+//        while (clientConnecte == null) {
+//            clientConnecte = plateforme.seconnecterclient();
+//        }
+//        plateforme.miseajourinfosclient(clientConnecte);
+//        clientConnecte.miseajourmdp();
+//        plateforme.consulterinfosclient(clientConnecte);
+//        
+//        //test de mise a jour mdp admin
+//        plateforme.creerCompteAdmin();
+//        admin adminConnecte = null;
+//        while (adminConnecte == null) {
+//            adminConnecte = plateforme.seconnecteradmin();
+//        }
+//        adminConnecte.miseajourmdp();
+//        System.out.println(adminConnecte);
+          System.out.print("l'oreille");
 
-        client clientConnecte = null;
-        while (clientConnecte == null) {
-            clientConnecte = plateforme.seconnecterclient();
-        }
-        plateforme.miseajourinfosclient(clientConnecte);
-        clientConnecte.miseajourmdp();
-        System.out.println(clientConnecte);
+
         
-        //test de mise a jour mdp admin
-        plateforme.creerCompteAdmin();
-        admin adminConnecte = null;
-        while (adminConnecte == null) {
-            adminConnecte = plateforme.seconnecteradmin();
-        }
-        adminConnecte.miseajourmdp();
-        System.out.println(adminConnecte);
-
     }
 }
