@@ -178,14 +178,15 @@ public class plateforme {
         
         System.out.println("veuillez entrez votre mot de passe : ");
         String mdp=sc.nextLine();
+        // verification que 'admin existe
         for(admin a : tabadmin){
             if (a.getemail().equals(mail)&&a.getMDP().equals(mdp)){
                 System.out.println("connexion reussie ! ");
-                return a;
+                return a;// retourne l'admin connecté
             }
         }
         System.out.println("mot de passe ou email incorrect ");
-        return null;
+        return null;// retour null si l'admin n'existe pas
     }
     public client seconnecterclient(){
         Scanner sc = new Scanner(System.in);
@@ -194,15 +195,68 @@ public class plateforme {
         
         System.out.println("veuillez entrez votre mot de passe : ");
         String mdp=sc.nextLine();
+        // verification que le client existe
         for(client a  : tabclients){
             if (a.getemail().equals(mail)&&a.getMDP().equals(mdp)){
                 System.out.println("connexion reussie ! ");
-                return a;
+                return a; // retourne le client connecté
             }
         }
+        // retour null si le client n'existe pas
         System.out.println("mot de passe ou email incorrect ");
         return null;
     }
+    
+    public void miseajourinfosclient(client c) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.println("Mise a jour des informations client : ");
+
+    System.out.print("Voulez vous modifier votre nom ? (true/false) : ");
+    boolean changer = sc.nextBoolean();
+    sc.nextLine(); // vider le buffer
+    if (changer) {
+        System.out.print("Nouveau nom : ");
+        c.setnom(sc.nextLine());
+    }
+
+    System.out.print("Voulez vous modifier votre prenom ? (true/false) : ");
+    changer = sc.nextBoolean();
+    sc.nextLine();
+    if (changer) {
+        System.out.print("Nouveau prenom : ");
+        c.setprenom(sc.nextLine());
+    }
+
+    System.out.print("Voulez vous modifier votre telephone ? (true/false) : ");
+    changer = sc.nextBoolean();
+    sc.nextLine();
+    if (changer) {
+        System.out.print("Nouveau telephone : ");
+        c.settel(sc.nextLine());
+    }
+
+    System.out.print("Voulez vous modifier votre adresse ? (true/false) : ");
+    changer = sc.nextBoolean();
+    sc.nextLine();
+    if (changer) {
+        System.out.print("Nouvelle adresse : ");
+        c.setadresse(sc.nextLine());
+    }
+
+    System.out.print("Voulez vous modifier votre type d abonnement ? (true/false) : ");
+    changer = sc.nextBoolean();
+    sc.nextLine();
+    if (changer) {
+        System.out.print("Nouveau type : ");
+        c.settypeabonnement(sc.nextLine());
+    }
+
+    System.out.println("Mise a jour terminee.");
+    }
+
+    
+   
     
     }
     

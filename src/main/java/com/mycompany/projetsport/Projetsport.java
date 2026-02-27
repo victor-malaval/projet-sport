@@ -32,19 +32,36 @@ public class Projetsport {
 //        plateforme.afficherAdmin();
 //        
         //test de connexion client 
+//        plateforme.creerCompteClient();
+//        client clientConnecte = null;
+//        while (clientConnecte == null) {
+//            clientConnecte = plateforme.seconnecterclient();
+//        }
+//        //test de connexion admin
+//        plateforme.creerCompteAdmin();
+//        admin adminConnecte = null;
+//        while (adminConnecte == null) {
+//            adminConnecte = plateforme.seconnecteradmin();
+//        }
+        //test de mise a jour infos clients et mdp
         plateforme.creerCompteClient();
+
         client clientConnecte = null;
         while (clientConnecte == null) {
             clientConnecte = plateforme.seconnecterclient();
         }
-        //test de connexion admin
+        plateforme.miseajourinfosclient(clientConnecte);
+        clientConnecte.miseajourmdp();
+        System.out.println(clientConnecte);
+        
+        //test de mise a jour mdp admin
         plateforme.creerCompteAdmin();
         admin adminConnecte = null;
         while (adminConnecte == null) {
             adminConnecte = plateforme.seconnecteradmin();
         }
-
-        
+        adminConnecte.miseajourmdp();
+        System.out.println(adminConnecte);
 
     }
 }

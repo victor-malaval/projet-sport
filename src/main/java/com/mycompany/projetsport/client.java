@@ -54,6 +54,22 @@ public String gettypeabonnement() {
     }
 public boolean getabonnement(){
     return abonnement;
+    
+}
+public void setnom(String nom) {
+    this.nom = nom;
+}
+public void setprenom(String prenom) {
+    this.prenom = prenom;
+}
+public void setadresse(String adresse) {
+    this.adresse = adresse;
+}
+public void settel(String tel) {
+    this.tel = tel;
+}
+public void settypeabonnement(String typeabonnement) {
+    this.typeabonnement = typeabonnement;
 }
 
 }
