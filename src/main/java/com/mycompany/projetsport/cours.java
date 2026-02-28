@@ -36,7 +36,7 @@ public class cours {
         @Override
         public String toString() {
         return "Cours ID : " + coursID +", Activite : " + activite +", Date : " + date 
-                +"duree : "+ dureecours+", Places : " + nbplace + ", Type : " + typecours +"Inscrit : "+listeinscrits;
+                +", duree : "+ dureecours+", Places : " + nbplace + ", Type : " + typecours +", Inscrit : "+listeinscrits;
         }
         public List<client> getlisteinscrits() {
         return listeinscrits;

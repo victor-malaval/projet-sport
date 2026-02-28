@@ -276,7 +276,7 @@ public class plateforme {
     System.out.println("Liste des cours futurs : ");
 
     for (cours cours : tabcoursfutur) {
-        System.out.println(cours);  // utilise automatiquement toString() de Cours
+        System.out.println(cours);  // affichage des cours
     }
     }
     
@@ -378,6 +378,13 @@ public class plateforme {
         if (trouve==false) {
             System.out.println("Cours introuvable.");
         }
+    }
+    public List<cours> getTabcoursfutur() {
+        return tabcoursfutur;
+    }
+
+    public List<cours> getTabcourspasse() {
+        return tabcourspasse;
     }
 
     }
