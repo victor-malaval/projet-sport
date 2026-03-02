@@ -32,7 +32,7 @@ public class client extends utilisateur {
     @Override
 public String toString() {
     return "Numero client : " + numero +" ,Mot de passe : " + getMDP() +", Email : " + getemail() +", Nom : " + nom +", Prenom : " + prenom +", Tel : " + tel +", Adresse : " + adresse
-    +", type abonnement : " + typeabonnement + ", etat " + abonnement;
+    +", type abonnement : " + typeabonnement + ", Actif " + abonnement;
 }
 public int getnumero() {
         return numero;
@@ -70,6 +70,9 @@ public void settel(String tel) {
 }
 public void settypeabonnement(String typeabonnement) {
     this.typeabonnement = typeabonnement;
+}
+public void setabonnement(boolean abonnement){
+    this.abonnement=abonnement;
 }
 
 }

@@ -32,7 +32,7 @@ public class plateforme {
         this.tabcourspasse=new ArrayList<>();
     }
     
-    
+    // methodes affichages : 
     @Override
      public String toString(){
     String resultat = "Liste des clients :\n";
@@ -89,7 +89,7 @@ public class plateforme {
     }
     
 
-    
+    //methodes creation compte
     public void creerCompteClient() {
 
     Scanner sc = new Scanner(System.in);
@@ -171,7 +171,7 @@ public class plateforme {
     }
 
             
-       
+    // methodes se connecter
     public admin seconnecteradmin(){
         Scanner sc = new Scanner(System.in);
         System.out.println("veuillez entrez votre mail : ");
@@ -208,6 +208,8 @@ public class plateforme {
         return null;
     }
     
+    
+    //methodes de mise a jour :
     public void miseajourinfosclient(client c) {
         Scanner sc = new Scanner(System.in);
 
@@ -256,6 +258,8 @@ public class plateforme {
         System.out.println("Mise a jour terminee.");
     }
     
+    
+    // methodes pour consulter : 
     public void consulterinfosclient(client c) {
         System.out.println("Numero : " + c.getnumero()
                 + ",  Email : " + c.getemail()
@@ -321,6 +325,9 @@ public class plateforme {
             System.out.println("Aucune activite disponible pour le moment.");
         }
     }
+    
+    
+    // Inscripption/desinscription : 
     public void inscrireCours(client c, int idCours) {
         boolean trouve = false;
         if (c.getabonnement()==false) {
@@ -379,6 +386,8 @@ public class plateforme {
             System.out.println("Cours introuvable.");
         }
     }
+    
+    // getters : 
     public List<cours> getTabcoursfutur() {
         return tabcoursfutur;
     }
@@ -386,7 +395,137 @@ public class plateforme {
     public List<cours> getTabcourspasse() {
         return tabcourspasse;
     }
+    public List<client> gettabclients(){
+    return tabclients;
+}
+    public void rechercherClients() {
 
+        Scanner sc = new Scanner(System.in);
+
+        if (tabclients.size() == 0) {
+            System.out.println("Aucun client enregistre.");
+            return;
+        }
+
+        System.out.println("Recherche client :");
+        System.out.println("1 - Par nom");
+        System.out.println("2 - Par email");
+        System.out.println("3 - Par numero client");
+        System.out.println("4 - Par telephone");
+        System.out.println("5 - Par adresse");
+        System.out.println("6 - Par type abonnement");
+        System.out.println("7 - Par etat abonnement (true/false)");
+        System.out.println("8 - Prenom");
+
+
+        int choix = sc.nextInt();
+        sc.nextLine(); // vider le buffer
+
+        boolean trouve = false;
+
+        switch (choix) {
+
+            case 1 -> {
+                System.out.print("Entrez le nom : ");
+                String nom = sc.nextLine();
+
+                for (client c : tabclients) {
+                    if (c.getnom().equalsIgnoreCase(nom)) {
+                        System.out.println(c);
+                        trouve = true;
+                    }
+                }
+            }
+
+            case 2 -> {
+                System.out.print("Entrez l'email : ");
+                String email = sc.nextLine();
+
+                for (client c : tabclients) {
+                    if (c.getemail().equalsIgnoreCase(email)) {
+                        System.out.println(c);
+                        trouve = true;
+                    }
+                }
+            }
+
+            case 3 -> {
+                System.out.print("Entrez le numero client : ");
+                int num = sc.nextInt();
+
+                for (client c : tabclients) {
+                    if (c.getnumero() == num) {
+                        System.out.println(c);
+                        trouve = true;
+                    }
+                }
+            }
+            case 4 -> {
+            System.out.print("Entrez le telephone : ");
+            String tel = sc.nextLine();
+
+            for (client c : tabclients) {
+                if (c.gettel().equalsIgnoreCase(tel)) {
+                    System.out.println(c);
+                    trouve = true;
+                }
+            }
+        }
+
+        case 5 -> {
+            System.out.print("Entrez l'adresse : ");
+            String adresse = sc.nextLine();
+
+            for (client c : tabclients) {
+                if (c.getadresse().equalsIgnoreCase(adresse)) {
+                    System.out.println(c);
+                    trouve = true;
+                }
+            }
+        }
+
+        case 6 -> {
+            System.out.print("Entrez le type d'abonnement : ");
+            String type = sc.nextLine();
+
+            for (client c : tabclients) {
+                if (c.gettypeabonnement().equalsIgnoreCase(type)) {
+                    System.out.println(c);
+                    trouve = true;
+                }
+            }
+        }
+
+        case 7 -> {
+            System.out.print("Entrez l'etat abonnement (true/false) : ");
+            boolean etat = sc.nextBoolean();
+
+            for (client c : tabclients) {
+                if (c.getabonnement() == etat) {
+                    System.out.println(c);
+                    trouve = true;
+                }
+            }
+        }
+        case 8 -> {
+            System.out.println("Entrez le Prenom : ");
+            String prenom=sc.nextLine();
+            for (client c : tabclients) {
+                if (c.geteprenom().equalsIgnoreCase(prenom)) {
+                    System.out.println(c);
+                    trouve = true;
+                }
+            }
+            
+        }
+
+        default -> System.out.println("Choix invalide.");
+        }
+
+        if (trouve == false) {
+            System.out.println("Aucun client trouve.");
+        }
+    }
     }
 
 

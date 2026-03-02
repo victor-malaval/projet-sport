@@ -12,26 +12,22 @@ import java.util.Scanner;
  * @author vivic
  */
 public class utilisateur {
-    /**Class utilisateur (mère)
-Attributs :
-Mot de passe
-Adresse mail (ID)
-Class admin(fille)
-Hérite Attributs :
-Class clients(fille)
-Attributs : numero client
-Type abonnement semestriel trimestriel mensuel annuel
-Etat abonnement actif passif
-Information nom prenom n°tel adresse postale
-Liste cours passés
-Liste cours futurs**/
+
+    /**
+     * Class utilisateur (mère) Attributs : Mot de passe Adresse mail (ID) Class
+     * admin(fille) Hérite Attributs : Class clients(fille) Attributs : numero
+     * client Type abonnement semestriel trimestriel mensuel annuel Etat
+     * abonnement actif passif Information nom prenom n°tel adresse postale
+     * Liste cours passés Liste cours futurs*
+     */
     private String MDP;
     private String email;
-    
-    public utilisateur(String valMDP, String valemail){
+
+    public utilisateur(String valMDP, String valemail) {
         this.MDP = valMDP;
         this.email = valemail;
     }
+
     /* GETTHERS*/
     public String getMDP() {
         return MDP;
@@ -40,10 +36,11 @@ Liste cours futurs**/
     public String getemail() {
         return email;
     }
-    public void miseajourmdp(){
+
+    public void miseajourmdp() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Mise a jour du mot de passe client : ");
-        String nouveaumdp=sc.nextLine();
-        this.MDP=nouveaumdp;
+        String nouveaumdp = sc.nextLine();
+        this.MDP = nouveaumdp;
     }
 }
