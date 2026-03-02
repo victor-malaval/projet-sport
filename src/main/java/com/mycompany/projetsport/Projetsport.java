@@ -69,53 +69,77 @@ public class Projetsport {
 //        System.out.println(adminConnecte);
           // fin test misemise a jour infos clients et mdp puis consulter les infos clients
           
-         //test des cours clients (consulteractivite, consultercoursfutur, inscrire cours, desinscrire cours, consulter cours inscrit et consultercourspassé)
-        client c1 = new client("mdp", "mail@test.com", 1,
-                "Dupont", "Jean", "0600000000",
-                "1 rue Paris", "annuel");
+//         //test des cours clients (consulteractivite, consultercoursfutur, inscrire cours, desinscrire cours, consulter cours inscrit et consultercourspassé)
+//        client c1 = new client("mdp", "mail@test.com", 1,
+//                "Dupont", "Jean", "0600000000",
+//                "1 rue Paris", "annuel");
 
 
-        // Création cours futurs
-        cours cours1 = new cours(1, "Collectif", "Yoga",
-                LocalDateTime.now().plusDays(2),
-                5, "1h");
+//        // Création cours futurs
+//        cours cours1 = new cours(1, "Collectif", "Yoga",
+//                LocalDateTime.now().plusDays(2),
+//                5, "1h");
+//
+//        cours cours2 = new cours(2, "Collectif", "Boxe",
+//                LocalDateTime.now().plusDays(5),
+//                2, "1h");
+//
+//        // Création cours passé
+//        cours cours3 = new cours(3, "Collectif", "Pilates",
+//                LocalDateTime.now().minusDays(5),
+//                5, "1h");
+//
+//        // Ajouter aux listes de la plateforme
+//        plateforme.getTabcoursfutur().add(cours1);
+//        plateforme.getTabcoursfutur().add(cours2);
+//        plateforme.getTabcourspasse().add(cours3);
+//
+//        
+//        // Voir tous les cours futurs
+//        plateforme.consulterlistecoursfutur();
+//
+//        //  Voir les activités futures
+//        plateforme.consulterActivitesfutur();
+//
+//        //  Inscrire au cours ID 1
+//        plateforme.inscrireCours(c1, 1);
+//
+//        //  Consulter les cours où le client est inscrit
+//        plateforme.consultercoursinscrit(c1);
+//
+//        //  Désinscrire du cours ID 1
+//        plateforme.desinscrireCours(c1, 1);
+//
+//        //  Vérifier qu’il n’est plus inscrit
+//        plateforme.consultercoursinscrit(c1);
+//
+//        //  Consulter cours passés (aucune inscription normalement)
+//        plateforme.consultercourspasse(c1);
+//        // fin test cours client
 
-        cours cours2 = new cours(2, "Collectif", "Boxe",
-                LocalDateTime.now().plusDays(5),
-                2, "1h");
-
-        // Création cours passé
-        cours cours3 = new cours(3, "Collectif", "Pilates",
-                LocalDateTime.now().minusDays(5),
-                5, "1h");
-
-        // Ajouter aux listes de la plateforme
-        plateforme.getTabcoursfutur().add(cours1);
-        plateforme.getTabcoursfutur().add(cours2);
-        plateforme.getTabcourspasse().add(cours3);
-
-        
-        // Voir tous les cours futurs
-        plateforme.consulterlistecoursfutur();
-
-        //  Voir les activités futures
-        plateforme.consulterActivitesfutur();
-
-        //  Inscrire au cours ID 1
-        plateforme.inscrireCours(c1, 1);
-
-        //  Consulter les cours où le client est inscrit
-        plateforme.consultercoursinscrit(c1);
-
-        //  Désinscrire du cours ID 1
-        plateforme.desinscrireCours(c1, 1);
-
-        //  Vérifier qu’il n’est plus inscrit
-        plateforme.consultercoursinscrit(c1);
-
-        //  Consulter cours passés (aucune inscription normalement)
-        plateforme.consultercourspasse(c1);
-        // fin test cours client
+//          // test rechercher client 
+//         client c1 = new client("mdp", "mail@test.com", 1,
+//                "Dupont", "Jean", "0600000000",
+//                "1 rue Paris", "annuel");
+//         c1.setabonnement(false);
+//        client c2 = new client("mdp2", "marie@mail.com", 2,
+//                "Martin", "Marie", "0700000000",
+//                "Lyon", "trimestriel");
+//
+//        c2.setabonnement(false);
+//
+//        client c3 = new client("mdp3", "paul@mail.com", 3,
+//                "Dupont", "Paul", "0800000000",
+//                "Marseille", "annuel");
+//
+//        c3.setabonnement(true);
+//        // Ajouter les clients à la plateforme
+//        plateforme.gettabclients().add(c1);
+//        plateforme.gettabclients().add(c2);
+//        plateforme.gettabclients().add(c3);
+//
+//        // Lancer la recherche
+//        plateforme.rechercherClients();
 
 
     }
