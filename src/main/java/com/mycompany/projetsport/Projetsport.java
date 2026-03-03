@@ -165,39 +165,74 @@ public class Projetsport {
 //        plateforme.consulterlistecoursfutur();
 
 
-         // test de modif cours et supprimer cours
-        cours c1 = new cours(1, "Collectif", "Yoga",
+//         // test de modif cours et supprimer cours
+//        cours c1 = new cours(1, "Collectif", "Yoga",
+//                LocalDateTime.of(2026, 3, 10, 10, 0),
+//                10, "1h");
+//
+//        cours c2 = new cours(2, "Individuel", "Boxe",
+//                LocalDateTime.of(2026, 3, 15, 14, 0),
+//                5, "1h");
+//        // Ajout des cours dans la plateforme
+//        plateforme.getTabcoursfutur().add(c1);
+//        plateforme.getTabcoursfutur().add(c2);
+//        
+//        client cl1 = new client("mdp2", "marie@mail.com", 2,
+//                "Martin", "Marie", "0700000000",
+//                "Lyon", "trimestriel");
+//
+//        // On active l’abonnement
+//         cl1.setabonnement(true);
+//
+//         //  On inscrit le client au cours
+//        plateforme.inscrireCours(cl1, 1);
+//
+//
+//        // Affichage avant modification
+//        plateforme.consulterlistecoursfutur();
+//
+//        // Test modification
+//        plateforme.modifierCoursFutur();
+//        plateforme.consulterlistecoursfutur();
+//
+//        // Test suppression
+//        plateforme.supprimerCoursFutur();
+//        plateforme.consulterlistecoursfutur();
+
+          // test des methodes consultercoursparActivte et consultercourspasse pour un admin
+           // Création des cours futurs 
+        cours futur1 = new cours(1, "Collectif", "Yoga",
                 LocalDateTime.of(2026, 3, 10, 10, 0),
                 10, "1h");
 
-        cours c2 = new cours(2, "Individuel", "Boxe",
+        cours futur2 = new cours(2, "Individuel", "Boxe",
                 LocalDateTime.of(2026, 3, 15, 14, 0),
                 5, "1h");
-        // Ajout des cours dans la plateforme
-        plateforme.getTabcoursfutur().add(c1);
-        plateforme.getTabcoursfutur().add(c2);
-        
-        client cl1 = new client("mdp2", "marie@mail.com", 2,
-                "Martin", "Marie", "0700000000",
-                "Lyon", "trimestriel");
 
-        // On active l’abonnement
-         cl1.setabonnement(true);
+        // Création des cours passés 
+        cours passe1 = new cours(3, "Collectif", "Yoga",
+                LocalDateTime.of(2025, 12, 10, 10, 0),
+                10, "1h");
 
-         //  On inscrit le client au cours
-        plateforme.inscrireCours(cl1, 1);
+        cours passe2 = new cours(4, "Individuel", "Pilates",
+                LocalDateTime.of(2025, 11, 20, 16, 0),
+                5, "1h");
 
+        // Ajout des cours à la plateforme
+        plateforme.getTabcoursfutur().add(futur1);
+        plateforme.getTabcoursfutur().add(futur2);
 
-        // Affichage avant modification
+        plateforme.getTabcourspasse().add(passe1);
+        plateforme.getTabcourspasse().add(passe2);
+
+        // Test consulterCoursParActivite
+        plateforme.consulterCoursParActivite();
+
+        //  Test consulterCoursPasse (affiche tous les cours passés)
+        plateforme.consulterCoursPasse();
+         // Test consulterCoursFutur (affiche tous les cours futur)
         plateforme.consulterlistecoursfutur();
-
-        // Test modification
-        plateforme.modifierCoursFutur();
-        plateforme.consulterlistecoursfutur();
-
-        // Test suppression
-        plateforme.supprimerCoursFutur();
-        plateforme.consulterlistecoursfutur();
+    
         
     }
 }

@@ -343,6 +343,42 @@ public class plateforme {
         }
     }
     
+    
+    public void consulterCoursParActivite() {
+
+        Scanner sc = new Scanner(System.in);
+
+        if (tabcoursfutur.isEmpty() && tabcourspasse.isEmpty()) {
+            System.out.println("Aucun cours disponible.");
+            return;
+        }
+
+        System.out.print("Entrez l'activite recherchee : ");
+        String activiteRecherchee = sc.nextLine();
+
+        boolean trouve = false;
+
+        System.out.println("Cours futurs : ");
+        for (cours c : tabcoursfutur) {
+            if (c.getactivite().equals(activiteRecherchee)) {
+                System.out.println(c);
+                trouve = true;
+            }
+        }
+
+        System.out.println("Cours passes : ");
+        for (cours c : tabcourspasse) {
+            if (c.getactivite().equals(activiteRecherchee)) {
+                System.out.println(c);
+                trouve = true;
+            }
+        }
+
+        if (!trouve) {
+            System.out.println("Aucun cours trouve pour cette activite.");
+        }
+    }
+    
     // Inscription/desinscription : 
     public void inscrireCours(client c, int idCours) {
         boolean trouve = false;
@@ -668,83 +704,85 @@ public class plateforme {
     
     public void modifierCoursFutur() {
 
-    Scanner sc = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
 
-    if (tabcoursfutur.isEmpty()) {
-        System.out.println("Aucun cours futur disponible.");
-        return;
-    }
-
-    System.out.print("Entrez l'ID du cours a modifier : ");
-    int id = sc.nextInt();
-    sc.nextLine();
-
-    for (cours c : tabcoursfutur) {
-
-        if (c.getcoursID() == id) {
-
-            if (c.getlisteinscrits().size()!=0) {
-                System.out.println("Impossible : des clients sont deja inscrits.");
-                return;
-            }
-
-            int choix;
-
-            do {
-                System.out.println("\nQue voulez-vous modifier ?");
-                System.out.println("1 - Type");
-                System.out.println("2 - Activite");
-                System.out.println("3 - Date");
-                System.out.println("4 - Nombre de places");
-                System.out.println("5 - Duree");
-                System.out.println("0 - Terminer");
-
-                choix = sc.nextInt();
-                sc.nextLine();
-
-                switch (choix) {
-
-                    case 1 -> {
-                        System.out.print("Nouveau type : ");
-                        c.setTypecours(sc.nextLine());
-                    }
-
-                    case 2 -> {
-                        System.out.print("Nouvelle activite : ");
-                        c.setActivite(sc.nextLine());
-                    }
-
-                    case 3 -> {
-                        System.out.print("Nouvelle date (format 2026-03-10T10:00) : ");
-                        c.setDate(LocalDateTime.parse(sc.nextLine()));
-                    }
-
-                    case 4 -> {
-                        System.out.print("Nouveau nombre de places : ");
-                        c.setNbplace(sc.nextInt());
-                        sc.nextLine();
-                    }
-
-                    case 5 -> {
-                        System.out.print("Nouvelle duree : ");
-                        c.setDureecours(sc.nextLine());
-                    }
-
-                    case 0 -> System.out.println("Modification terminee.");
-
-                    default -> System.out.println("Choix invalide.");
-                }
-
-            } while (choix != 0);
-
-            System.out.println("Cours modifie avec succes.");
+        if (tabcoursfutur.isEmpty()) {
+            System.out.println("Aucun cours futur disponible.");
             return;
         }
+
+        System.out.print("Entrez l'ID du cours a modifier : ");
+        int id = sc.nextInt();
+        sc.nextLine();
+
+        for (cours c : tabcoursfutur) {
+
+            if (c.getcoursID() == id) {
+
+                if (c.getlisteinscrits().size() != 0) {
+                    System.out.println("Impossible : des clients sont deja inscrits.");
+                    return;
+                }
+
+                int choix;
+
+                do {
+                    System.out.println("\nQue voulez-vous modifier ?");
+                    System.out.println("1 - Type");
+                    System.out.println("2 - Activite");
+                    System.out.println("3 - Date");
+                    System.out.println("4 - Nombre de places");
+                    System.out.println("5 - Duree");
+                    System.out.println("0 - Terminer");
+
+                    choix = sc.nextInt();
+                    sc.nextLine();
+
+                    switch (choix) {
+
+                        case 1 -> {
+                            System.out.print("Nouveau type : ");
+                            c.setTypecours(sc.nextLine());
+                        }
+
+                        case 2 -> {
+                            System.out.print("Nouvelle activite : ");
+                            c.setActivite(sc.nextLine());
+                        }
+
+                        case 3 -> {
+                            System.out.print("Nouvelle date (format 2026-03-10T10:00) : ");
+                            c.setDate(LocalDateTime.parse(sc.nextLine()));
+                        }
+
+                        case 4 -> {
+                            System.out.print("Nouveau nombre de places : ");
+                            c.setNbplace(sc.nextInt());
+                            sc.nextLine();
+                        }
+
+                        case 5 -> {
+                            System.out.print("Nouvelle duree : ");
+                            c.setDureecours(sc.nextLine());
+                        }
+
+                        case 0 ->
+                            System.out.println("Modification terminee.");
+
+                        default ->
+                            System.out.println("Choix invalide.");
+                    }
+
+                } while (choix != 0);
+
+                System.out.println("Cours modifie avec succes.");
+                return;
+            }
+        }
+
+        System.out.println("Cours introuvable.");
     }
-
-    System.out.println("Cours introuvable.");
-}
-
+    
     
     // getters : 
     public List<cours> getTabcoursfutur() {
