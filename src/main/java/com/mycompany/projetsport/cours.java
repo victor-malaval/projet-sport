@@ -16,49 +16,79 @@ import java.util.List;
  * @author vivic
  */
 public class cours {
+
     private int coursID;
     private String typecours;
     private String activite;
-    private  LocalDateTime date;
+    private LocalDateTime date;
     private int nbplace;
     private List<client> listeinscrits;
     private String dureecours;
-    
-        public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace, String valdureecours){
-        this.coursID=valcoursID;
-        this.activite=valactivite;
-        this.date=valdate;
-        this.nbplace=valnbplace;
-        this.typecours=valtypecours;
-        this.listeinscrits=new ArrayList<>();
-        this.dureecours=valdureecours;
-                }
-        @Override
-        public String toString() {
-        return "Cours ID : " + coursID +", Activite : " + activite +", Date : " + date 
-                +", duree : "+ dureecours+", Places : " + nbplace + ", Type : " + typecours +", Inscrit : "+listeinscrits;
-        }
-        public List<client> getlisteinscrits() {
+
+    public cours(int valcoursID, String valtypecours, String valactivite, LocalDateTime valdate, int valnbplace, String valdureecours) {
+        this.coursID = valcoursID;
+        this.activite = valactivite;
+        this.date = valdate;
+        this.nbplace = valnbplace;
+        this.typecours = valtypecours;
+        this.listeinscrits = new ArrayList<>();
+        this.dureecours = valdureecours;
+    }
+
+    @Override
+    public String toString() {
+        return "Cours ID : " + coursID + ", Activite : " + activite + ", Date : " + date
+                + ", duree : " + dureecours + ", Places : " + nbplace + ", Type : " + typecours + ", Inscrit : " + listeinscrits;
+    }
+
+    public List<client> getlisteinscrits() {
         return listeinscrits;
-        }
-        public String getactivite() {
+    }
+
+    public String getactivite() {
         return activite;
-        }
-        public int getcoursID() {
+    }
+
+    public int getcoursID() {
         return coursID;
+    }
+
+    public int getnbplace() {
+        return nbplace;
+    }
+
+    public void setCoursID(int coursID) {
+        this.coursID = coursID;
+    }
+
+    public void setTypecours(String typecours) {
+        this.typecours = typecours;
+    }
+
+    public void setActivite(String activite) {
+        this.activite = activite;
+    }
+
+    public void setDate(LocalDateTime date) {
+        this.date = date;
+    }
+
+    public void setNbplace(int nbplace) {
+        if (nbplace >= 0) {
+            this.nbplace = nbplace;
+        } else {
+            System.out.println("Le nombre de places ne peut pas etre negatif.");
         }
-        public int getnbplace(){
-            return nbplace;
-        }
+    }
+
+
+   
+    public void setDureecours(String dureecours) {
+        this.dureecours = dureecours;
+    }
+
         
     
 
-    
-                
-                
-    
-            
-    
-    
     
 }
