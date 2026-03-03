@@ -526,6 +526,73 @@ public class plateforme {
             System.out.println("Aucun client trouve.");
         }
     }
+    public void consulterClients() {
+        afficherClient();
+    }
+    public void desactiverAbonnement() {
+
+        Scanner sc = new Scanner(System.in);
+
+        if (tabclients.size() == 0) {
+            System.out.println("Aucun client enregistre.");
+            return;
+        }
+
+        System.out.print("Entrez le numero du client : ");
+        int num = sc.nextInt();
+
+        boolean trouve = false;
+
+        for (client c : tabclients) {
+            if (c.getnumero() == num) {
+                trouve = true;
+
+                if (c.getabonnement()) {
+                    c.setabonnement(false);
+                    System.out.println("Abonnement desactive avec succes.");
+                } else {
+                    System.out.println("L'abonnement est deja desactive.");
+                }
+            }
+        }
+
+        if (!trouve) {
+            System.out.println("Client introuvable.");
+        }
+    }
+    public void reactiverAbonnement() {
+
+        Scanner sc = new Scanner(System.in);
+
+        if (tabclients.size() == 0) {
+            System.out.println("Aucun client enregistre.");
+            return;
+        }
+
+        System.out.print("Entrez le numero du client : ");
+        int num = sc.nextInt();
+
+        boolean trouve = false;
+
+        for (client c : tabclients) {
+            if (c.getnumero() == num) {
+                trouve = true;
+
+                if (!c.getabonnement()) {
+                    c.setabonnement(true);
+                    System.out.println("Abonnement reactive avec succes.");
+                } else {
+                    System.out.println("L'abonnement est deja actif.");
+                }
+            }
+        }
+
+        if (!trouve) {
+            System.out.println("Client introuvable.");
+        }
+    }
+    
+    
     }
 
 

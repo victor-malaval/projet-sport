@@ -142,5 +142,23 @@ public class Projetsport {
 //        plateforme.rechercherClients();
 
 
+        // test activation/desactivation d'un compte client par l'admin
+        client c2 = new client("mdp2", "marie@mail.com", 2,
+                "Martin", "Marie", "0700000000",
+                "Lyon", "trimestriel");
+
+        c2.setabonnement(true);
+        plateforme.gettabclients().add(c2);
+        plateforme.consulterClients();     // voir etat actuel
+
+        plateforme.desactiverAbonnement();
+
+        plateforme.consulterClients();     // verifier changement
+
+        plateforme.reactiverAbonnement();
+
+        plateforme.consulterClients();
+
+
     }
 }
