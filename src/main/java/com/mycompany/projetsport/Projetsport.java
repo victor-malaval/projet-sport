@@ -142,23 +142,62 @@ public class Projetsport {
 //        plateforme.rechercherClients();
 
 
-        // test activation/desactivation d'un compte client par l'admin
-        client c2 = new client("mdp2", "marie@mail.com", 2,
+//        // test activation/desactivation d'un compte client par l'admin
+//        client c2 = new client("mdp2", "marie@mail.com", 2,
+//                "Martin", "Marie", "0700000000",
+//                "Lyon", "trimestriel");
+//
+//        c2.setabonnement(true);
+//        plateforme.gettabclients().add(c2);
+//        plateforme.consulterClients();     // voir etat actuel
+//
+//        plateforme.desactiverAbonnement();
+//
+//        plateforme.consulterClients();     // verifier changement
+//
+//        plateforme.reactiverAbonnement();
+//
+//        plateforme.consulterClients();
+
+
+         // test d'ajout de cours
+//        plateforme.ajouterCours();
+//        plateforme.consulterlistecoursfutur();
+
+
+         // test de modif cours et supprimer cours
+        cours c1 = new cours(1, "Collectif", "Yoga",
+                LocalDateTime.of(2026, 3, 10, 10, 0),
+                10, "1h");
+
+        cours c2 = new cours(2, "Individuel", "Boxe",
+                LocalDateTime.of(2026, 3, 15, 14, 0),
+                5, "1h");
+        // Ajout des cours dans la plateforme
+        plateforme.getTabcoursfutur().add(c1);
+        plateforme.getTabcoursfutur().add(c2);
+        
+        client cl1 = new client("mdp2", "marie@mail.com", 2,
                 "Martin", "Marie", "0700000000",
                 "Lyon", "trimestriel");
 
-        c2.setabonnement(true);
-        plateforme.gettabclients().add(c2);
-        plateforme.consulterClients();     // voir etat actuel
+        // On active l’abonnement
+         cl1.setabonnement(true);
 
-        plateforme.desactiverAbonnement();
-
-        plateforme.consulterClients();     // verifier changement
-
-        plateforme.reactiverAbonnement();
-
-        plateforme.consulterClients();
+         //  On inscrit le client au cours
+        plateforme.inscrireCours(cl1, 1);
 
 
+        // Affichage avant modification
+        plateforme.consulterlistecoursfutur();
+
+        // Test modification
+        plateforme.modifierCoursFutur();
+        plateforme.consulterlistecoursfutur();
+
+        // Test suppression
+        plateforme.supprimerCoursFutur();
+        plateforme.consulterlistecoursfutur();
+        
     }
 }
