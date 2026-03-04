@@ -8,12 +8,14 @@ package com.mycompany.projetsport;
  *
  * @author vivic
  */
+import java.io.File;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 
 public class Projetsport {
     public static void main(String[] args) {
-        plateforme plateforme=new plateforme("test");
+        
 //        // test toString Client
 //        ArrayList<client> listeClients = new ArrayList<>();
 //        listeClients.add(new client("mdp1", "client1@email.com", 1, "Dupont", "Jean", "123456789", "1 rue de Paris", "trimestriel"));
@@ -285,46 +287,99 @@ public class Projetsport {
 //        // Test méthode
 //        plateforme.coursLesPlusPopulaires();
         
+//        
+//        // test de la methode coursLesMoinsPopulaires 
+//         // Création des cours
+//        cours c1 = new cours(1, "Collectif", "Yoga",
+//                LocalDateTime.of(2026, 3, 10, 10, 0),
+//                10, "1h");
+//
+//        cours c2 = new cours(2, "Collectif", "Boxe",
+//                LocalDateTime.of(2026, 3, 12, 14, 0),
+//                5, "1h");
+//
+//        cours c3 = new cours(3, "Individuel", "tennis",
+//                LocalDateTime.of(2026, 3, 15, 9, 0),
+//                1, "1h");
+//
+//        //  Ajout à la plateforme
+//        plateforme.getTabcoursfutur().add(c1);
+//        plateforme.getTabcoursfutur().add(c2);
+//        plateforme.getTabcoursfutur().add(c3);
+//
+//        // Création des clients 
+//        client cl1 = new client("mdp1", "a@mail.com", 1,
+//                "Dupont", "Alice", "0700000001",
+//                "Paris", "mensuel");
+//
+//        client cl2 = new client("mdp2", "b@mail.com", 2,
+//                "Martin", "Bob", "0700000002",
+//                "Lyon", "mensuel");
+//
+//        cl1.setabonnement(true);
+//        cl2.setabonnement(true);
+//
+//        //  Inscriptions
+//        plateforme.inscrireCours(cl1, 1);  
+//        plateforme.inscrireCours(cl2, 2);  
+//        plateforme.inscrireCours(cl1, 2);
+//        plateforme.inscrireCours(cl2, 3);
+//  
+//        plateforme.coursLesMoinsPopulaires();  // test methode
         
-        // test de la methode coursLesMoinsPopulaires 
-         // Création des cours
-        cours c1 = new cours(1, "Collectif", "Yoga",
-                LocalDateTime.of(2026, 3, 10, 10, 0),
-                10, "1h");
+        
+        // test de chargement + sauvegarde des données 
+       
+try {
+            // Création de la plateforme
+            plateforme plateforme = new plateforme("sauvegarde.txt");
 
-        cours c2 = new cours(2, "Collectif", "Boxe",
-                LocalDateTime.of(2026, 3, 12, 14, 0),
-                5, "1h");
+            // Création de clients 
+            client c1 = new client("mdp1", "alice@mail.com", 1,
+                    "Dupont", "Alice", "0600000001", "Paris", "mensuel");
+            c1.setabonnement(true);
 
-        cours c3 = new cours(3, "Individuel", "tennis",
-                LocalDateTime.of(2026, 3, 15, 9, 0),
-                1, "1h");
+            client c2 = new client("mdp2", "bob@mail.com", 2,
+                    "Martin", "Bob", "0600000002", "Lyon", "mensuel");
+            c2.setabonnement(true);
 
-        //  Ajout à la plateforme
-        plateforme.getTabcoursfutur().add(c1);
-        plateforme.getTabcoursfutur().add(c2);
-        plateforme.getTabcoursfutur().add(c3);
+            plateforme.gettabclients().add(c1);
+            plateforme.gettabclients().add(c2);
 
-        // Création des clients 
-        client cl1 = new client("mdp1", "a@mail.com", 1,
-                "Dupont", "Alice", "0700000001",
-                "Paris", "mensuel");
+            // Création d’admins
+            admin a1 = new admin("adminmdp", "admin@mail.com");
+            plateforme.gettabadmin().add(a1);
 
-        client cl2 = new client("mdp2", "b@mail.com", 2,
-                "Martin", "Bob", "0700000002",
-                "Lyon", "mensuel");
+            //  Création de cours 
+            cours cr1 = new cours(1, "Collectif", "Yoga",
+                    LocalDateTime.of(2026, 3, 10, 10, 0), 10, "1h");
+            cours cr2 = new cours(2, "Individuel", "Boxe",
+                    LocalDateTime.of(2026, 3, 15, 14, 0), 5, "1h");
 
-        cl1.setabonnement(true);
-        cl2.setabonnement(true);
+            // Inscription d’un client pour tester
+            cr1.getlisteinscrits().add(c1);
 
-        //  Inscriptions
-        plateforme.inscrireCours(cl1, 1);  
-        plateforme.inscrireCours(cl2, 2);  
-        plateforme.inscrireCours(cl1, 2);
-        plateforme.inscrireCours(cl2, 3);
-  
-        plateforme.coursLesMoinsPopulaires();  // test methode
+            plateforme.getTabcoursfutur().add(cr1);
+            plateforme.getTabcoursfutur().add(cr2);
 
+            //Affichage des données
+            System.out.println("Clients : ");
+            plateforme.afficherClient();
+            System.out.println("Admins : ");
+            plateforme.afficherAdmin();
+            System.out.println("Cours futurs : ");
+            plateforme.consulterlistecoursfutur();
 
+            //Chemin du fichier
+            File file = new File("sauvegarde.txt");
+            System.out.println("\nFichier sauvegarde attendu ici : " + file.getAbsolutePath());
+
+            // Sauvegarde
+            plateforme.sauvegarder();
+            System.out.println("\nDonnees sauvegardees avec succes !");
+
+        } catch (IOException e) {
+            System.out.println("Erreur lors du chargement ou de la sauvegarde : " + e.getMessage());
+        }
     }
 }

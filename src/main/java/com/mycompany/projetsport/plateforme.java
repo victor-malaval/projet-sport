@@ -2,6 +2,11 @@ package com.mycompany.projetsport;
 
 
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -877,6 +882,80 @@ public class plateforme {
         }
     }
     }
+ 
+public void sauvegarder() throws IOException {
+    File file = new File(Nomfichiersauvegarde);
+
+    if (!file.exists()) {
+        file.createNewFile();
+    }
+
+    FileWriter fw = new FileWriter(file);
+
+    fw.write("CLIENTS : " + System.lineSeparator());
+    for (client c : tabclients) {
+        fw.write(c.versFichier() + System.lineSeparator());
+    }
+
+    fw.write(System.lineSeparator());
+    fw.write("ADMINS : " + System.lineSeparator());
+    for (admin a : tabadmin) {
+        fw.write(a.versFichier() + System.lineSeparator());
+    }
+
+    fw.write(System.lineSeparator());
+    fw.write("COURS FUTURS : " + System.lineSeparator());
+    for (cours c : tabcoursfutur) {
+        fw.write(c.versFichier());
+    }
+
+    fw.write(System.lineSeparator());
+    fw.write("COURS PASSES : " + System.lineSeparator());
+    for (cours c : tabcourspasse) {
+        fw.write(c.versFichier());
+    }
+
+    fw.close();
+    System.out.println("Sauvegarde réussie !");
+}
+
+    public void charger() throws IOException {
+        File file = new File(Nomfichiersauvegarde);
+
+        if (!file.exists()) {
+            // Fichier inexistant → rien à charger
+            System.out.println("Fichier de sauvegarde introuvable, rien à charger.");
+            return;
+        }
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+        String ligne;
+
+        while ((ligne = br.readLine()) != null) {
+            // Exemple pour charger un client (il faut adapter selon ton format)
+            String[] parts = ligne.split(":");
+            if (parts.length > 1) {
+                String mdp = parts[0];
+                String email = parts[1];
+                int numClient = Integer.parseInt(parts[2]);
+                String nom = parts[3];
+                String prenom = parts[4];
+                String tel = parts[5];
+                String adresse = parts[6];
+                String typeAbonnement = parts[7];
+                boolean etat = Boolean.parseBoolean(parts[8]);
+
+                client c = new client(mdp, email, numClient, nom, prenom, tel, adresse, typeAbonnement);
+                c.setabonnement(etat);
+                tabclients.add(c);
+            }
+            // Faire de même pour admin et cours
+        }
+
+        br.close();
+        System.out.println("Chargement terminé !");
+    }
+
     // getters : 
     public List<cours> getTabcoursfutur() {
         return tabcoursfutur;
@@ -888,6 +967,9 @@ public class plateforme {
 
     public List<client> gettabclients() {
         return tabclients;
+    }
+    public List<admin> gettabadmin(){
+        return tabadmin;
     }
     
 }

@@ -34,6 +34,9 @@ public String toString() {
     return "Numero client : " + numero +" ,Mot de passe : " + getMDP() +", Email : " + getemail() +", Nom : " + nom +", Prenom : " + prenom +", Tel : " + tel +", Adresse : " + adresse
     +", type abonnement : " + typeabonnement + ", Actif " + abonnement;
 }
+public String versFichier() {
+    return getnumero() + " : " + getMDP() + " : " + getemail() + " : " + getnom() + " : " + geteprenom() + " : " + gettel() + " : " + getadresse() + " : " + gettypeabonnement() + " : " + getabonnement();
+}
 public int getnumero() {
         return numero;
     }

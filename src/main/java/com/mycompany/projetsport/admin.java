@@ -19,6 +19,8 @@ public class admin extends utilisateur{
     public String toString() {
     return "Mot de passe : " + getMDP() +", Email : " + getemail();
     }
-
-    
+   
+    public String versFichier() {
+        return getMDP() + " : " + getemail();
+    }
 }

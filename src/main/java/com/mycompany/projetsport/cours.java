@@ -52,6 +52,36 @@ public class cours {
 
         return res;
     }
+   public String versFichier() {
+    StringBuilder sb = new StringBuilder();
+
+    sb.append("ID :").append(coursID).append(System.lineSeparator());
+    sb.append("Type :").append(typecours).append(System.lineSeparator());
+    sb.append("Activite :").append(activite).append(System.lineSeparator());
+    sb.append("Date :").append(date.toString()).append(System.lineSeparator());
+    sb.append("Places:").append(nbplace).append(System.lineSeparator());
+    sb.append("Duree :").append(dureecours).append(System.lineSeparator());
+
+    sb.append("Inscrits : ");
+
+    if (listeinscrits.isEmpty()) {
+        sb.append("Aucun");
+    } else {
+        sb.append(System.lineSeparator());
+        for (client cl : listeinscrits) {
+            sb.append(" - ")
+              .append("ID ").append(cl.getnumero())
+              .append(" : ")
+              .append(cl.geteprenom()).append(" ")
+              .append(cl.getnom())
+              .append(System.lineSeparator());
+        }
+    }
+
+    sb.append(System.lineSeparator()); // séparation entre les cours
+
+    return sb.toString();
+}
 
     public double getTauxRemplissage() {
 
