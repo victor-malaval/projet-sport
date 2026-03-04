@@ -199,40 +199,132 @@ public class Projetsport {
 //        plateforme.supprimerCoursFutur();
 //        plateforme.consulterlistecoursfutur();
 
-          // test des methodes consultercoursparActivte et consultercourspasse pour un admin
-           // Création des cours futurs 
-        cours futur1 = new cours(1, "Collectif", "Yoga",
+
+
+//          // test des methodes consultercoursparActivte et consultercourspasse pour un admin
+//          // Création des cours futurs 
+//        cours futur1 = new cours(1, "Collectif", "Yoga",
+//                LocalDateTime.of(2026, 3, 10, 10, 0),
+//                10, "1h");
+//
+//        cours futur2 = new cours(2, "Individuel", "Boxe",
+//                LocalDateTime.of(2026, 3, 15, 14, 0),
+//                5, "1h");
+//
+//        // Création des cours passés 
+//        cours passe1 = new cours(3, "Collectif", "Yoga",
+//                LocalDateTime.of(2025, 12, 10, 10, 0),
+//                10, "1h");
+//
+//        cours passe2 = new cours(4, "Individuel", "Pilates",
+//                LocalDateTime.of(2025, 11, 20, 16, 0),
+//                5, "1h");
+//
+//        // Ajout des cours à la plateforme
+//        plateforme.getTabcoursfutur().add(futur1);
+//        plateforme.getTabcoursfutur().add(futur2);
+//
+//        plateforme.getTabcourspasse().add(passe1);
+//        plateforme.getTabcourspasse().add(passe2);
+//
+//        // Test consulterCoursParActivite
+//        plateforme.consulterCoursParActivite();
+//
+//        //  Test consulterCoursPasse (affiche tous les cours passés)
+//        plateforme.consulterCoursPasse();
+//         // Test consulterCoursFutur (affiche tous les cours futur)
+//        plateforme.consulterlistecoursfutur();
+
+
+        // test de la methode coursLesPlusPopulaires
+        
+//        //  Création des cours
+//        cours c1 = new cours(1, "Collectif", "Yoga",
+//                LocalDateTime.of(2026, 3, 10, 10, 0),
+//                10, "1h");
+//
+//        cours c2 = new cours(2, "Collectif", "Boxe",
+//                LocalDateTime.of(2026, 3, 12, 14, 0),
+//                10, "1h");
+//
+//        cours c3 = new cours(3, "Collectif", "Pilates",
+//                LocalDateTime.of(2026, 3, 15, 16, 0),
+//                10, "1h");
+//
+//        // Ajout à la plateforme
+//        plateforme.getTabcoursfutur().add(c1);
+//        plateforme.getTabcoursfutur().add(c2);
+//        plateforme.getTabcoursfutur().add(c3);
+//
+//        //  Création des clients 
+//        client cl1 = new client("mdp1", "a@mail.com", 1,
+//                "Dupont", "Alice", "0700000001",
+//                "Paris", "mensuel");
+//
+//        client cl2 = new client("mdp2", "b@mail.com", 2,
+//                "Martin", "Bob", "0700000002",
+//                "Lyon", "mensuel");
+//
+//        client cl3 = new client("mdp3", "c@mail.com", 3,
+//                "Bernard", "Clara", "0700000003",
+//                "Marseille", "annuel");
+//
+//        // Activer abonnements
+//        cl1.setabonnement(true);
+//        cl2.setabonnement(true);
+//        cl3.setabonnement(true);
+//
+//        // --- Inscriptions ---
+//        // Yoga aura 2 inscrits
+//        plateforme.inscrireCours(cl1, 1);
+//        plateforme.inscrireCours(cl2, 1);
+//
+//        // Boxe aura 1 inscrit
+//        plateforme.inscrireCours(cl3, 2);
+//
+//        // Test méthode
+//        plateforme.coursLesPlusPopulaires();
+        
+        
+        // test de la methode coursLesMoinsPopulaires 
+         // Création des cours
+        cours c1 = new cours(1, "Collectif", "Yoga",
                 LocalDateTime.of(2026, 3, 10, 10, 0),
                 10, "1h");
 
-        cours futur2 = new cours(2, "Individuel", "Boxe",
-                LocalDateTime.of(2026, 3, 15, 14, 0),
+        cours c2 = new cours(2, "Collectif", "Boxe",
+                LocalDateTime.of(2026, 3, 12, 14, 0),
                 5, "1h");
 
-        // Création des cours passés 
-        cours passe1 = new cours(3, "Collectif", "Yoga",
-                LocalDateTime.of(2025, 12, 10, 10, 0),
-                10, "1h");
+        cours c3 = new cours(3, "Individuel", "tennis",
+                LocalDateTime.of(2026, 3, 15, 9, 0),
+                1, "1h");
 
-        cours passe2 = new cours(4, "Individuel", "Pilates",
-                LocalDateTime.of(2025, 11, 20, 16, 0),
-                5, "1h");
+        //  Ajout à la plateforme
+        plateforme.getTabcoursfutur().add(c1);
+        plateforme.getTabcoursfutur().add(c2);
+        plateforme.getTabcoursfutur().add(c3);
 
-        // Ajout des cours à la plateforme
-        plateforme.getTabcoursfutur().add(futur1);
-        plateforme.getTabcoursfutur().add(futur2);
+        // Création des clients 
+        client cl1 = new client("mdp1", "a@mail.com", 1,
+                "Dupont", "Alice", "0700000001",
+                "Paris", "mensuel");
 
-        plateforme.getTabcourspasse().add(passe1);
-        plateforme.getTabcourspasse().add(passe2);
+        client cl2 = new client("mdp2", "b@mail.com", 2,
+                "Martin", "Bob", "0700000002",
+                "Lyon", "mensuel");
 
-        // Test consulterCoursParActivite
-        plateforme.consulterCoursParActivite();
+        cl1.setabonnement(true);
+        cl2.setabonnement(true);
 
-        //  Test consulterCoursPasse (affiche tous les cours passés)
-        plateforme.consulterCoursPasse();
-         // Test consulterCoursFutur (affiche tous les cours futur)
-        plateforme.consulterlistecoursfutur();
-    
-        
+        //  Inscriptions
+        plateforme.inscrireCours(cl1, 1);  
+        plateforme.inscrireCours(cl2, 2);  
+        plateforme.inscrireCours(cl1, 2);
+        plateforme.inscrireCours(cl2, 3);
+  
+        plateforme.coursLesMoinsPopulaires();  // test methode
+
+
     }
 }

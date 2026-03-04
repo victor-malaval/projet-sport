@@ -782,8 +782,101 @@ public class plateforme {
 
         System.out.println("Cours introuvable.");
     }
-    
-    
+    public void coursLesPlusPopulaires() {
+
+        if (tabcoursfutur.isEmpty()) {
+            System.out.println("Aucun cours futur disponible.");
+            return;
+        }
+
+        double maxTaux = 0;
+
+        // Recherche du taux maximum
+        for (cours c : tabcoursfutur) {
+            if (c.getTauxRemplissage() > maxTaux) {
+                maxTaux = c.getTauxRemplissage();
+            }
+        }
+
+        System.out.println("Cours les plus populaires : ");
+
+        for (cours c : tabcoursfutur) {
+            if (c.getTauxRemplissage() == maxTaux) {
+                System.out.println(c);
+                System.out.println("Taux de remplissage : " + c.getTauxRemplissage() + "%");
+            }
+        }
+
+        // Proposer ajout seulement si au moins un inscrit
+        if (maxTaux > 0) {
+
+            Scanner sc = new Scanner(System.in);
+
+            System.out.println("\nVoulez-vous ajouter un nouveau cours similaire ?");
+            System.out.println("1 - Oui");
+            System.out.println("2 - Non");
+
+            int choix = sc.nextInt();
+            sc.nextLine();
+
+            if (choix == 1) {
+                ajouterCours();   // appel direct
+            }
+        } else {
+            System.out.println("\nAucun cours n'a encore d'inscrit.");
+        }
+    }
+
+
+    public void coursLesMoinsPopulaires() {
+
+    if (tabcoursfutur.isEmpty()) {
+        System.out.println("Aucun cours futur disponible.");
+        return;
+    }
+
+    double minTaux = 100;
+
+    for (cours c : tabcoursfutur) {
+        if (c.getTauxRemplissage() < minTaux) {
+            minTaux = c.getTauxRemplissage();
+        }
+    }
+
+    System.out.println(" Cours les moins populaires : ");
+
+    for (cours c : tabcoursfutur) {
+        if (c.getTauxRemplissage() == minTaux) {
+            System.out.println(c);
+            System.out.println("Taux de remplissage : " + c.getTauxRemplissage() + "%");
+        }
+    }
+
+    if (minTaux == 0) {
+
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Cours sans aucun inscrit : ");
+
+        for (cours c : tabcoursfutur) {
+            if (c.getlisteinscrits().isEmpty()) {
+                System.out.println("ID : " + c.getcoursID() +
+                                   ", Activite : " + c.getactivite() +
+                                   ", Date : " + c.getdate());
+            }
+        }
+
+        System.out.println("Voulez-vous en supprimer un ?");
+        System.out.println("1 - Oui");
+        System.out.println("2 - Non");
+
+        int choix = sc.nextInt();
+        sc.nextLine();
+
+        if (choix == 1) {
+            supprimerCoursFutur();  //  appel direct
+        }
+    }
+    }
     // getters : 
     public List<cours> getTabcoursfutur() {
         return tabcoursfutur;

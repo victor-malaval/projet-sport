@@ -38,8 +38,29 @@ public class cours {
     @Override
     public String toString() {
         return "Cours ID : " + coursID + ", Activite : " + activite + ", Date : " + date
-                + ", duree : " + dureecours + ", Places : " + nbplace + ", Type : " + typecours + ", Inscrit : " + listeinscrits;
+                + ", duree : " + dureecours + ", Places : " + nbplace + ", Type : " + typecours + ", Inscrit : " + afficherInscritsResume();
     }
+    public String afficherInscritsResume() {
+
+        String res = "";
+
+        for (client c : listeinscrits) {
+            res += "[ID: " + c.getnumero()
+                    + ", Nom: " + c.getnom()
+                    + ", Prenom: " + c.geteprenom() + "] ";
+        }
+
+        return res;
+    }
+
+    public double getTauxRemplissage() {
+
+    if (nbplace == 0) {
+        return 0;
+    }
+
+    return ((double) listeinscrits.size() / nbplace) * 100;
+}
 
     public List<client> getlisteinscrits() {
         return listeinscrits;
@@ -56,6 +77,11 @@ public class cours {
     public int getnbplace() {
         return nbplace;
     }
+    public LocalDateTime getdate(){
+        return date;
+    }
+    
+
 
     public void setCoursID(int coursID) {
         this.coursID = coursID;
